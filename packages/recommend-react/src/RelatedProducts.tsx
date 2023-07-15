@@ -15,7 +15,7 @@ const UncontrolledRelatedProducts = createRelatedProductsComponent({
 
 export type UseRelatedProductsProps<TObject> = OptionalRecommendClient<
   GetRelatedProductsProps<TObject>
->;
+> & { enabled?: boolean };
 
 export type RelatedProductsProps<TObject> = UseRelatedProductsProps<TObject> &
   Omit<
