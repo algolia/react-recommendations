@@ -1,3 +1,36 @@
+> 🙌 From now on you can use Algolia Recommend from withing InstantSearch, simplifying your integration between the two libraries!
+>
+> Learn how to migrate following the [upgrade guide](https://www.algolia.com/doc/guides/algolia-recommend/upgrade-guides) provided.
+
+
+```js
+instantsearch({
+  // No need for a recommendClient anymore
+  searchClient,
+  indexName,
+}).addWidgets([
+  frequentlyBoughtTogether({
+    container: '#frequentlyBoughtTogether',
+    objectIDs: [currentObjectID],
+  }),
+  relatedProducts({
+    container: '#relatedProducts',
+    objectIDs: [currentObjectID],
+  }),
+])
+```
+
+```jsx
+<InstantSearch searchClient={searchClient} indexName={indexName}>
+  <FrequentlyBoughtTogether objectIDs={[currentObjectID]} />
+  <RelatedProducts objectIDs={[currentObjectID]} />
+</InstantSearch>
+```
+
+---
+---
+---
+
 # Recommend
 
 [![Version](https://img.shields.io/npm/v/@algolia/recommend-js.svg?style=flat-square)](https://www.npmjs.com/package/@algolia/recommend-js) [![MIT License](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
