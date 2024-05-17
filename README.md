@@ -4,10 +4,11 @@
 
 
 ```js
-import instantsearch, {
+import instantsearch from 'instantsearch.js';
+import {
   frequentlyBoughtTogether,
   relatedProducts,
-} from 'instantsearch.js';
+} from 'instantsearch.js/es/widgets';
 import algoliasearch from 'algoliasearch/lite';
 const searchClient = algoliasearch('YourApplicationID', 'YourSearchOnlyAPIKey');
 
