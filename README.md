@@ -1,9 +1,16 @@
-> 🙌 From now on you can use Algolia Recommend from withing InstantSearch, simplifying your integration between the two libraries!
+> 🙌 From now on you can use Algolia Recommend from InstantSearch, simplifying your integration between the two libraries!
 >
-> Learn how to migrate following the [upgrade guide](https://www.algolia.com/doc/guides/algolia-recommend/upgrade-guides) provided.
+> Learn how to migrate following the [upgrade guide](https://www.algolia.com/doc/guides/algolia-recommend/upgrade-guide).
 
 
 ```js
+import instantsearch, {
+  frequentlyBoughtTogether,
+  relatedProducts,
+} from 'instantsearch.js';
+import algoliasearch from 'algoliasearch/lite';
+const searchClient = algoliasearch('YourApplicationID', 'YourSearchOnlyAPIKey');
+
 instantsearch({
   // No need for a recommendClient anymore
   searchClient,
@@ -17,14 +24,26 @@ instantsearch({
     container: '#relatedProducts',
     objectIDs: [currentObjectID],
   }),
-])
+]);
 ```
 
 ```jsx
-<InstantSearch searchClient={searchClient} indexName={indexName}>
-  <FrequentlyBoughtTogether objectIDs={[currentObjectID]} />
-  <RelatedProducts objectIDs={[currentObjectID]} />
-</InstantSearch>
+import {
+  InstantSearch,
+  FrequentlyBoughtTogether,
+  RelatedProducts,
+} from 'react-instantsearch';
+import algoliasearch from 'algoliasearch/lite';
+const searchClient = algoliasearch('YourApplicationID', 'YourSearchOnlyAPIKey');
+
+function App() {
+  return (
+    <InstantSearch searchClient={searchClient} indexName={indexName}>
+      <FrequentlyBoughtTogether objectIDs={[currentObjectID]} />
+      <RelatedProducts objectIDs={[currentObjectID]} />
+    </InstantSearch>
+  );
+}
 ```
 
 ---
