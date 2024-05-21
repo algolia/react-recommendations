@@ -1,3 +1,56 @@
+> 🙌 From now on you can use Algolia Recommend from InstantSearch, simplifying your integration between the two libraries!
+>
+> Learn how to migrate following the [upgrade guide for JS](https://www.algolia.com/doc/guides/algolia-recommend/upgrade/recommend-js/) or [for React](https://www.algolia.com/doc/guides/algolia-recommend/upgrade/recommend-react/).
+
+
+```js
+import instantsearch from 'instantsearch.js';
+import {
+  frequentlyBoughtTogether,
+  relatedProducts,
+} from 'instantsearch.js/es/widgets';
+import algoliasearch from 'algoliasearch/lite';
+const searchClient = algoliasearch('YourApplicationID', 'YourSearchOnlyAPIKey');
+
+instantsearch({
+  // No need for a recommendClient anymore
+  searchClient,
+  indexName,
+}).addWidgets([
+  frequentlyBoughtTogether({
+    container: '#frequentlyBoughtTogether',
+    objectIDs: [currentObjectID],
+  }),
+  relatedProducts({
+    container: '#relatedProducts',
+    objectIDs: [currentObjectID],
+  }),
+]);
+```
+
+```jsx
+import {
+  InstantSearch,
+  FrequentlyBoughtTogether,
+  RelatedProducts,
+} from 'react-instantsearch';
+import algoliasearch from 'algoliasearch/lite';
+const searchClient = algoliasearch('YourApplicationID', 'YourSearchOnlyAPIKey');
+
+function App() {
+  return (
+    <InstantSearch searchClient={searchClient} indexName={indexName}>
+      <FrequentlyBoughtTogether objectIDs={[currentObjectID]} />
+      <RelatedProducts objectIDs={[currentObjectID]} />
+    </InstantSearch>
+  );
+}
+```
+
+---
+---
+---
+
 # Recommend
 
 [![Version](https://img.shields.io/npm/v/@algolia/recommend-js.svg?style=flat-square)](https://www.npmjs.com/package/@algolia/recommend-js) [![MIT License](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
