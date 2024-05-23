@@ -1,7 +1,7 @@
 {
   "name": "@algolia/recommend-react",
   "description": "React package for Algolia Recommend.",
-  "version": "1.14.0",
+  "version": "1.15.0",
   "license": "MIT",
   "homepage": "https://github.com/algolia/recommend",
   "repository": "algolia/recommend",
@@ -29,8 +29,8 @@
     "prepare": "yarn build:esm && yarn build:types"
   },
   "dependencies": {
-    "@algolia/recommend-core": "1.14.0",
-    "@algolia/recommend-vdom": "1.14.0",
+    "@algolia/recommend-core": "1.15.0",
+    "@algolia/recommend-vdom": "1.15.0",
     "dequal": "2.0.3"
   },
   "peerDependencies": {
