@@ -28,9 +28,7 @@ instantsearch({
 ```
 
 ---
-
 ---
-
 ---
 
 # `@algolia/recommend-js`
