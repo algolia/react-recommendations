@@ -22,9 +22,7 @@ function App() {
 ```
 
 ---
-
 ---
-
 ---
 
 # `@algolia/recommend-react`
