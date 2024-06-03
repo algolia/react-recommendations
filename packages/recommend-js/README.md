@@ -1,6 +1,6 @@
 > 🙌 From now on you can use Algolia Recommend from InstantSearch, simplifying your integration between the two libraries!
 >
-> Learn how to migrate following the [upgrade guide for JS](https://www.algolia.com/doc/guides/algolia-recommend/upgrade/recommend-js/) or [for React](https://www.algolia.com/doc/guides/algolia-recommend/upgrade/recommend-react/).
+> Learn how to migrate following the [upgrade guide](https://www.algolia.com/doc/guides/algolia-recommend/upgrade/recommend-js/).
 
 ```js
 import instantsearch from 'instantsearch.js';
