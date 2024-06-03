@@ -1,3 +1,30 @@
+> 🙌 From now on you can use Algolia Recommend from InstantSearch, simplifying your integration between the two libraries!
+>
+> Learn how to migrate following the [upgrade guide](https://www.algolia.com/doc/guides/algolia-recommend/upgrade/recommend-react/).
+
+```jsx
+import {
+  InstantSearch,
+  FrequentlyBoughtTogether,
+  RelatedProducts,
+} from 'react-instantsearch';
+import algoliasearch from 'algoliasearch/lite';
+const searchClient = algoliasearch('YourApplicationID', 'YourSearchOnlyAPIKey');
+
+function App() {
+  return (
+    <InstantSearch searchClient={searchClient} indexName={indexName}>
+      <FrequentlyBoughtTogether objectIDs={[currentObjectID]} />
+      <RelatedProducts objectIDs={[currentObjectID]} />
+    </InstantSearch>
+  );
+}
+```
+
+---
+---
+---
+
 # `@algolia/recommend-react`
 
 React package for [Algolia Recommend](https://www.algolia.com/doc/guides/algolia-ai/recommend/).
