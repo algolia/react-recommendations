@@ -27,25 +27,6 @@ instantsearch({
 ]);
 ```
 
-```jsx
-import {
-  InstantSearch,
-  FrequentlyBoughtTogether,
-  RelatedProducts,
-} from 'react-instantsearch';
-import algoliasearch from 'algoliasearch/lite';
-const searchClient = algoliasearch('YourApplicationID', 'YourSearchOnlyAPIKey');
-
-function App() {
-  return (
-    <InstantSearch searchClient={searchClient} indexName={indexName}>
-      <FrequentlyBoughtTogether objectIDs={[currentObjectID]} />
-      <RelatedProducts objectIDs={[currentObjectID]} />
-    </InstantSearch>
-  );
-}
-```
-
 ---
 
 ---
