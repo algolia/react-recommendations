@@ -2,31 +2,6 @@
 >
 > Learn how to migrate following the [upgrade guide](https://www.algolia.com/doc/guides/algolia-recommend/upgrade/recommend-react/).
 
-```js
-import instantsearch from 'instantsearch.js';
-import {
-  frequentlyBoughtTogether,
-  relatedProducts,
-} from 'instantsearch.js/es/widgets';
-import algoliasearch from 'algoliasearch/lite';
-const searchClient = algoliasearch('YourApplicationID', 'YourSearchOnlyAPIKey');
-
-instantsearch({
-  // No need for a recommendClient anymore
-  searchClient,
-  indexName,
-}).addWidgets([
-  frequentlyBoughtTogether({
-    container: '#frequentlyBoughtTogether',
-    objectIDs: [currentObjectID],
-  }),
-  relatedProducts({
-    container: '#relatedProducts',
-    objectIDs: [currentObjectID],
-  }),
-]);
-```
-
 ```jsx
 import {
   InstantSearch,
