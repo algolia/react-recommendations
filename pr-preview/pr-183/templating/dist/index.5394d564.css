@@ -1,2 +1,0 @@
-:root{--auc-primary-color:#9698c3;--auc-muted-color:#c4c4c4;--auc-dark-color:#0f0f0f}.auc-Recommend-list{outline-color:var(--auc-primary-color);outline-offset:.5rem;grid-template-columns:repeat(2,1fr);gap:.5rem;margin:0;padding:0;list-style:none;display:grid}@media (min-width:999px){.auc-Recommend-list{grid-template-columns:repeat(5,1fr)}}
-/*# sourceMappingURL=index.5394d564.css.map */
