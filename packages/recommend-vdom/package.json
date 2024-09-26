@@ -1,6 +1,6 @@
 {
   "name": "@algolia/recommend-vdom",
-  "version": "1.15.0",
+  "version": "1.16.0",
   "license": "MIT",
   "homepage": "https://github.com/algolia/recommend",
   "repository": "algolia/recommend",
@@ -28,6 +28,6 @@
     "prepare": "yarn build:esm && yarn build:types"
   },
   "devDependencies": {
-    "@algolia/recommend-core": "1.15.0"
+    "@algolia/recommend-core": "1.16.0"
   }
 }

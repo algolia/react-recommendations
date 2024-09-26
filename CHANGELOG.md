@@ -1,3 +1,12 @@
+# [1.16.0](https://github.com/algolia/recommend/compare/v1.15.0...v1.16.0) (2024-09-26)
+
+
+### Bug Fixes
+
+* update the readme of js/react packages ([#186](https://github.com/algolia/recommend/issues/186)) ([9b4f553](https://github.com/algolia/recommend/commit/9b4f553cebd4775cefc0b3e26f5323d9ef66541b))
+
+
+
 # [1.15.0](https://github.com/algolia/recommend/compare/v1.14.0...v1.15.0) (2024-05-23)
 
 
