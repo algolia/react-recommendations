@@ -28,7 +28,6 @@ export const HomePage: React.FC = () => {
         itemComponent={({ item }) => (
           <Facet
             hit={item}
-            insights={insights}
             onSelect={(facetHits) => {
               const isSameValue =
                 selectedFacetValue &&
@@ -70,6 +69,9 @@ export const HomePage: React.FC = () => {
             selectedFacetValue ? `in ${selectedFacetValue.facetValue}` : ''
           }`,
         }}
+        queryParameters={{
+          clickAnalytics: true,
+        }}
       />
       <RecommendedForYou<ProductHit>
         recommendClient={recommendClient}
@@ -77,6 +79,7 @@ export const HomePage: React.FC = () => {
         maxRecommendations={15}
         queryParameters={{
           userToken: 'likes-gender-men',
+          clickAnalytics: true,
         }}
         itemComponent={({ item }) => (
           <Hit

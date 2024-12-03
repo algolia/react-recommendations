@@ -2,6 +2,8 @@ import type { RecommendClient, RecommendationsQuery } from '@algolia/recommend';
 
 import { ProductRecord, RecordWithObjectID } from './types';
 import { mapToRecommendations } from './utils';
+import { addAbsolutePosition } from './utils/addAbsolutePosition';
+import { addIndexName } from './utils/addIndexName';
 import { version } from './version';
 
 export type RecommendationsProps<TObject> = {
@@ -66,7 +68,13 @@ export function getRecommendations<TObject>({
         maxRecommendations,
         hits: response.results.map((result) => result.hits),
         nrOfObjs: objectIDs.length,
+        queryIDs: response.results.map((res) => res.queryID),
       })
+    )
+    .then((hits) =>
+      hits
+        .map((hit) => addIndexName(hit, indexName))
+        .map((hit, idx) => addAbsolutePosition(hit, idx))
     )
     .then((hits) => ({ recommendations: transformItems(hits) }));
 }

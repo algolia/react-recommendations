@@ -2,7 +2,6 @@ import React from 'react';
 import './style.css';
 import { InsightsClient } from 'search-insights';
 
-import { indexName } from '../../config';
 import { ProductHit, ProductReviews } from '../../types';
 import { ButtonComponent } from '../common';
 
@@ -56,10 +55,12 @@ export const ComparisonChartItem: React.FC<ChartItemProps<ProductHit>> = ({
             event.preventDefault();
 
             onSelect(item);
-            insights('clickedObjectIDs', {
+            insights('clickedObjectIDsAfterSearch', {
               objectIDs: [item.objectID],
               eventName: 'Product Clicked',
-              index: indexName,
+              index: item.__indexName,
+              positions: [item.__position],
+              queryID: item.__queryID,
             });
           }}
         >
@@ -78,7 +79,7 @@ export const ComparisonChartItem: React.FC<ChartItemProps<ProductHit>> = ({
                 insights('convertedObjectIDsAfterSearch', {
                   eventName: 'Product Added To Cart',
                   objectIDs: [item.objectID],
-                  index: indexName,
+                  index: item.__indexName,
                   queryID: item.__queryID,
                 });
               }}

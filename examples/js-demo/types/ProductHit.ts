@@ -29,7 +29,7 @@ export type ProductRecord = {
 };
 
 type WithInsights<THit> = THit & {
-  __position: string;
+  __position: number;
   __indexName: string;
   __queryID: string;
 };
