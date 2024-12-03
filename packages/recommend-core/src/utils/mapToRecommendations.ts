@@ -2,7 +2,6 @@ import { ProductRecord } from '../types';
 import { AverageIndices } from '../types/AverageIndices';
 import { IndexTracker } from '../types/IndexTracker';
 
-import { addQueryID } from './addQueryID';
 import { getAverageIndices } from './computeAverageIndices';
 
 /**
@@ -29,18 +28,19 @@ export function mapToRecommendations<TObject>({
   const indexTracker: IndexTracker = {};
 
   hits.forEach((hitsArray, idx) => {
-    hitsArray
-      .map((hit) => addQueryID(hit, queryIDs[idx]))
-      .forEach((hit, index) => {
-        if (!indexTracker[hit.objectID]) {
-          indexTracker[hit.objectID] = { indexSum: index, nr: 1 };
-        } else {
-          indexTracker[hit.objectID] = {
-            indexSum: indexTracker[hit.objectID].indexSum + index,
-            nr: indexTracker[hit.objectID].nr + 1,
-          };
-        }
-      });
+    hitsArray.forEach((hit, index) => {
+      if (queryIDs[idx]) {
+        hit.__queryID = queryIDs[idx];
+      }
+      if (!indexTracker[hit.objectID]) {
+        indexTracker[hit.objectID] = { indexSum: index, nr: 1 };
+      } else {
+        indexTracker[hit.objectID] = {
+          indexSum: indexTracker[hit.objectID].indexSum + index,
+          nr: indexTracker[hit.objectID].nr + 1,
+        };
+      }
+    });
   });
 
   const sortedAverageIndices = getAverageIndices(indexTracker, nrOfObjs);
