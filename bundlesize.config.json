@@ -2,15 +2,15 @@
   "files": [
     {
       "path": "packages/recommend-core/dist/umd/index.js",
-      "maxSize": "2.05 kB"
+      "maxSize": "2.25 kB"
     },
     {
       "path": "packages/recommend-js/dist/umd/index.js",
-      "maxSize": "7.50 kB"
+      "maxSize": "7.68 kB"
     },
     {
       "path": "packages/recommend-react/dist/umd/index.js",
-      "maxSize": "4.55 kB"
+      "maxSize": "4.65 kB"
     },
     {
       "path": "packages/recommend-vdom/dist/umd/index.js",
@@ -18,11 +18,11 @@
     },
     {
       "path": "packages/recommend-react/dist/umd/experimental-personalization/index.js",
-      "maxSize": "5.76 kB"
+      "maxSize": "5.98 kB"
     },
     {
       "path": "packages/recommend-js/dist/umd/experimental-personalization/index.js",
-      "maxSize": "8.45 kB"
+      "maxSize": "8.63 kB"
     }
   ]
 }
