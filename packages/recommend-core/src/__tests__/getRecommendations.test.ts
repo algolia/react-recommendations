@@ -114,7 +114,7 @@ describe('getRecommendations', () => {
       getRecommendations: jest.fn(() =>
         Promise.resolve(
           createMultiSearchResponse({
-            hits: [hit],
+            hits: [{ ...hit, __indexName: 'indexName', __position: 1 }],
           })
         )
       ),
@@ -129,6 +129,8 @@ describe('getRecommendations', () => {
 
     expect(recommendations).toEqual([
       {
+        __indexName: 'indexName',
+        __position: 1,
         category: 'Women - Jumpsuits-Overalls',
         hierarchical_categories: {
           lvl0: 'women',
