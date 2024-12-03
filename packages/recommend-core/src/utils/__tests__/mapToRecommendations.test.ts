@@ -80,21 +80,25 @@ describe('mapToRecommendations', () => {
     const result = mapToRecommendations({
       hits: response.results.map((result) => result.hits),
       nrOfObjs: 2,
+      queryIDs: ['queryID1'],
     });
 
     expect(result).toMatchInlineSnapshot(`
       Array [
         Object {
+          "__queryID": "queryID1",
           "_score": 0,
           "name": "Product B",
           "objectID": "B",
         },
         Object {
+          "__queryID": "queryID1",
           "_score": 76,
           "name": "Product E",
           "objectID": "E",
         },
         Object {
+          "__queryID": "queryID1",
           "_score": 0,
           "name": "Product C",
           "objectID": "C",
@@ -105,6 +109,7 @@ describe('mapToRecommendations', () => {
           "objectID": "F",
         },
         Object {
+          "__queryID": "queryID1",
           "_score": 100,
           "name": "Product A",
           "objectID": "A",
@@ -115,6 +120,7 @@ describe('mapToRecommendations', () => {
           "objectID": "G",
         },
         Object {
+          "__queryID": "queryID1",
           "_score": 89,
           "name": "Product D",
           "objectID": "D",
