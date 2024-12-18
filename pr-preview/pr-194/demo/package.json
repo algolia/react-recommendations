@@ -1,0 +1,32 @@
+{
+  "name": "@algolia/recommend-react-example",
+  "description": "Recommend React example",
+  "version": "1.16.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "build": "parcel build index.html",
+    "start": "parcel index.html",
+    "test:types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@algolia/autocomplete-js": "1.8.3",
+    "@algolia/autocomplete-theme-classic": "1.8.3",
+    "@algolia/client-search": "4.22.1",
+    "@algolia/recommend": "4.22.1",
+    "@algolia/recommend-react": "1.16.0",
+    "@algolia/ui-components-horizontal-slider-react": "1.2.1",
+    "@algolia/ui-components-horizontal-slider-theme": "1.2.1",
+    "algoliasearch": "4.17.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-router-dom": "^6.17.0",
+    "search-insights": "2.17.3"
+  },
+  "devDependencies": {
+    "@babel/core": "7.21.4",
+    "@types/node": "18.14.0",
+    "@types/react-dom": "17.0.2",
+    "parcel": "2.8.3"
+  }
+}
