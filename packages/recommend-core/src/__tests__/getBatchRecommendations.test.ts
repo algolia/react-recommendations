@@ -33,7 +33,7 @@ describe('getBatchRecommendations', () => {
     expect(recommendClient.getRecommendations).toHaveBeenCalledTimes(1);
     expect(Object.keys(result)[0]).toEqual('{"key":"key-1"}');
     expect(Object.values(result)[0]).toEqual({
-      recommendations: [hit],
+      recommendations: [{ ...hit, __indexName: 'indexName', __position: 1 }],
       trendingFacets: [],
     });
   });

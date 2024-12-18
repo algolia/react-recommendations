@@ -47,7 +47,9 @@ describe('useRecommendedForYou', () => {
 
     await waitForNextUpdate();
     await waitFor(() => {
-      expect(result.current.recommendations).toEqual([hit]);
+      expect(result.current.recommendations).toEqual([
+        { ...hit, __indexName: 'test', __position: 1 },
+      ]);
     });
   });
 

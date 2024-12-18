@@ -46,6 +46,7 @@ export function getTrendingFacets({
       mapByScoreToRecommendations<TrendingFacetHit>({
         maxRecommendations,
         hits: response.results.map((result) => result.hits).flat(),
+        indexName,
       })
     )
     .then((hits) => ({ recommendations: transformItems(hits) }));

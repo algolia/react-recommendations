@@ -12,10 +12,12 @@ export function RelatedItem({ item, insights, onSelect }: RelatedItemProps) {
       onClick={(event) => {
         event.preventDefault();
         onSelect(item);
-        insights('clickedObjectIDs', {
+        insights('clickedObjectIDsAfterSearch', {
           objectIDs: [item.objectID],
           eventName: 'Product Clicked',
           index: item.__indexName,
+          positions: [item.__position],
+          queryID: item.__queryID,
         });
       }}
     >

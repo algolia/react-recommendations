@@ -7,6 +7,8 @@ import {
 
 import { TrendingFacetHit, ProductRecord } from './types';
 import { mapByScoreToRecommendations, mapToRecommendations } from './utils';
+import { addAbsolutePosition } from './utils/addAbsolutePosition';
+import { addIndexName } from './utils/addIndexName';
 import { version } from './version';
 
 export type BatchKeyPair = {
@@ -55,9 +57,11 @@ export async function getBatchRecommendations<TObject>({
     const { model } = JSON.parse(keyPair.key);
 
     allChunks += keyPair.value;
-    const { maxRecommendations, transformItems = (x) => x } = queries[
-      prevChunks
-    ];
+    const {
+      indexName,
+      maxRecommendations,
+      transformItems = (x) => x,
+    } = queries[prevChunks];
     const splitResult = response?.results?.slice(prevChunks, allChunks);
     prevChunks += keyPair.value;
 
@@ -71,13 +75,18 @@ export async function getBatchRecommendations<TObject>({
       recommendations = mapByScoreToRecommendations<ProductRecord<TObject>>({
         maxRecommendations,
         hits: splitResult.map((res) => res.hits).flat(),
+        indexName,
+        queryID: splitResult.at(0)?.queryID,
       });
     } else {
       recommendations = mapToRecommendations<ProductRecord<TObject>>({
         maxRecommendations,
         hits: splitResult.map((res) => res.hits),
         nrOfObjs: keyPair.value,
-      });
+        queryIDs: splitResult.map((res) => res.queryID),
+      })
+        .map((hit) => addIndexName(hit, indexName))
+        .map((hit, idx) => addAbsolutePosition(hit, idx));
     }
     recommendations = transformItems(recommendations);
     results[keyPair.key] = { recommendations, trendingFacets };

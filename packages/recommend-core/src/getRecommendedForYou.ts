@@ -1,6 +1,9 @@
 import { Hit } from '@algolia/client-search';
 import { RecommendClient, RecommendedForYouParams } from '@algolia/recommend';
 
+import { addAbsolutePosition } from './utils/addAbsolutePosition';
+import { addIndexName } from './utils/addIndexName';
+import { addQueryID } from './utils/addQueryID';
 import { version } from './version';
 
 export type GetRecommendedForYouProps<TObject> = {
@@ -36,9 +39,16 @@ export function getRecommendedForYou<TObject>({
 
   return recommendClient
     .getRecommendedForYou<TObject>(queries)
-    .then((hits) => ({
+    .then((response) => ({
       recommendations: transformItems(
-        hits.results.map((result) => result.hits).flat()
+        response.results
+          .map((result) =>
+            result.hits
+              .map((hit) => addIndexName(hit, indexName))
+              .map((hit) => addQueryID(hit, result.queryID))
+          )
+          .flat()
+          .map((hit, idx) => addAbsolutePosition(hit, idx))
       ),
     }));
 }

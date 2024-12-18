@@ -14,6 +14,7 @@ import { getAverageIndices } from './computeAverageIndices';
 
 type MapToRecommendations<TObject> = {
   hits: Array<Array<ProductRecord<TObject>>>;
+  queryIDs: Array<string | undefined>;
   maxRecommendations?: number;
   nrOfObjs: number;
 };
@@ -22,11 +23,15 @@ export function mapToRecommendations<TObject>({
   hits,
   maxRecommendations,
   nrOfObjs,
+  queryIDs,
 }: MapToRecommendations<TObject>): Array<ProductRecord<TObject>> {
   const indexTracker: IndexTracker = {};
 
-  hits.forEach((hitsArray) => {
+  hits.forEach((hitsArray, idx) => {
     hitsArray.forEach((hit, index) => {
+      if (queryIDs[idx]) {
+        hit.__queryID = queryIDs[idx];
+      }
       if (!indexTracker[hit.objectID]) {
         indexTracker[hit.objectID] = { indexSum: index, nr: 1 };
       } else {

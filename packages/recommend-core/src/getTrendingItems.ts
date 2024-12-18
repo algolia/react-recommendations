@@ -64,6 +64,8 @@ export function getTrendingItems<TObject>({
           'objectID',
           response.results.map((result) => result.hits).flat()
         ),
+        indexName,
+        queryID: response.results?.at(0)?.queryID,
       })
     )
     .then((hits) => ({ recommendations: transformItems(hits) }));

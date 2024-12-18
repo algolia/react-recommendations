@@ -1,7 +1,6 @@
 import React from 'react';
 import { InsightsClient } from 'search-insights';
 
-import { indexName } from '../../config';
 import { ProductHit } from '../../types';
 import './style.css';
 import { ButtonComponent } from '../common';
@@ -21,10 +20,12 @@ export function Hit({ hit, onSelect, insights }: HitProps) {
         event.preventDefault();
 
         onSelect(hit);
-        insights('clickedObjectIDs', {
+        insights('clickedObjectIDsAfterSearch', {
           objectIDs: [hit.objectID],
           eventName: 'Product Clicked',
-          index: indexName,
+          index: hit.__indexName,
+          positions: [hit.__position],
+          queryID: hit.__queryID,
         });
       }}
     >
@@ -45,7 +46,7 @@ export function Hit({ hit, onSelect, insights }: HitProps) {
             insights('convertedObjectIDsAfterSearch', {
               eventName: 'Product Added To Cart',
               objectIDs: [hit.objectID],
-              index: indexName,
+              index: hit.__indexName,
               queryID: hit.__queryID,
             });
           }}
