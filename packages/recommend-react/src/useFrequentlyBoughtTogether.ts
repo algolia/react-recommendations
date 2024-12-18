@@ -12,6 +12,7 @@ import { useStableValue } from './useStableValue';
 import { useStatus } from './useStatus';
 
 export function useFrequentlyBoughtTogether<TObject>({
+  enabled = true,
   indexName,
   maxRecommendations,
   objectIDs: userObjectIDs,
@@ -40,6 +41,10 @@ export function useFrequentlyBoughtTogether<TObject>({
   }, [userTransformItems]);
 
   useEffect(() => {
+    if (!enabled) {
+      return;
+    }
+
     const param = {
       indexName,
       maxRecommendations,
@@ -92,6 +97,7 @@ export function useFrequentlyBoughtTogether<TObject>({
     });
     return () => {};
   }, [
+    enabled,
     indexName,
     maxRecommendations,
     objectIDs,

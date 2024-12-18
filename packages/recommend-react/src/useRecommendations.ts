@@ -9,9 +9,12 @@ import { useAlgoliaAgent } from './useAlgoliaAgent';
 import { useStableValue } from './useStableValue';
 import { useStatus } from './useStatus';
 
-export type UseRecommendationsProps<TObject> = GetRecommendationsProps<TObject>;
+export type UseRecommendationsProps<
+  TObject
+> = GetRecommendationsProps<TObject> & { enabled?: boolean };
 
 export function useRecommendations<TObject>({
+  enabled = true,
   fallbackParameters: userFallbackParameters,
   indexName,
   maxRecommendations,
@@ -38,6 +41,10 @@ export function useRecommendations<TObject>({
   }, [userTransformItems]);
 
   useEffect(() => {
+    if (!enabled) {
+      return;
+    }
+
     setStatus('loading');
     getRecommendations({
       fallbackParameters,
@@ -54,6 +61,7 @@ export function useRecommendations<TObject>({
       setStatus('idle');
     });
   }, [
+    enabled,
     fallbackParameters,
     indexName,
     maxRecommendations,

@@ -13,7 +13,7 @@ const UncontrolledTrendingFacets = createTrendingFacetsComponent({
   Fragment,
 });
 
-export type UseTrendingFacetsProps = OptionalRecommendClient<GetTrendingFacetsProps>;
+export type UseTrendingFacetsProps = OptionalRecommendClient<GetTrendingFacetsProps> & { enabled?: boolean };
 
 export type TrendingFacetsProps = UseTrendingFacetsProps &
   Omit<

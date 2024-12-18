@@ -12,6 +12,7 @@ import { useAlgoliaAgent } from './useAlgoliaAgent';
 import { useStatus } from './useStatus';
 
 export function useTrendingFacets({
+  enabled = true,
   indexName,
   maxRecommendations,
   recommendClient,
@@ -37,6 +38,10 @@ export function useTrendingFacets({
   }, [userTransformItems]);
 
   useEffect(() => {
+    if (!enabled) {
+      return;
+    }
+
     const param = {
       model: 'trending-facets' as TrendingModel,
       indexName,
@@ -84,6 +89,7 @@ export function useTrendingFacets({
     });
     return () => {};
   }, [
+    enabled,
     indexName,
     maxRecommendations,
     client,
